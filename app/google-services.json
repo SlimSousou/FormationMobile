@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "633645956386",
+    "firebase_url": "https://formationmobile-38e24-default-rtdb.firebaseio.com",
+    "project_id": "formationmobile-38e24",
+    "storage_bucket": "formationmobile-38e24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633645956386:android:178c408a542a776286397b",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633645956386-j386ithcporjsp1mb07so2uhdl3kcfn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQpWhcF9VR3ckn1EeC19WRrMYUuSjM2A4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633645956386-j386ithcporjsp1mb07so2uhdl3kcfn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633645956386:android:c05deda3e81a07ca86397b",
+        "android_client_info": {
+          "package_name": "com.slim.sousou.myapplication2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633645956386-j386ithcporjsp1mb07so2uhdl3kcfn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQpWhcF9VR3ckn1EeC19WRrMYUuSjM2A4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633645956386-j386ithcporjsp1mb07so2uhdl3kcfn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
