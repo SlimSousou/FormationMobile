@@ -58,6 +58,7 @@
                 android:layout_marginLeft="10sp"/>
 
             <EditText
+                android:id="@+id/emailSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="exemple@gmail.com"
@@ -80,6 +81,7 @@
                 android:layout_marginLeft="10sp"/>
 
             <EditText
+                android:id="@+id/passwordSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="********"
@@ -114,6 +116,7 @@
                 android:layout_gravity="end"/>
 
             <Button
+                android:id="@+id/buttonSignIn"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
