@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,8 @@ public class SignInActivity extends AppCompatActivity {
     private Button btnSignIn;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private CheckBox remember;
+
 
 
     @Override
@@ -31,15 +36,43 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+
+
         goToSignUP = findViewById(R.id.goToSignUp);
         goToForgetPass = findViewById(R.id.goToForgetPass);
         emailSignIn = findViewById(R.id.emailSignIn);
         passwordSignIn = findViewById(R.id.passwordSignIn);
         btnSignIn = findViewById(R.id.buttonSignIn);
+        remember = findViewById(R.id.rememberMe);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
+        //remember me
+        SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+        String checkbox= preferences.getString("remember","");
+        if (checkbox.equals("true")){
+            startActivity(new Intent(SignInActivity.this,ProfileActivity.class));
+        }else{
+            Toast.makeText(this, "please login!", Toast.LENGTH_SHORT).show();
+        }
+
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember","true");
+                    editor.apply();
+                }else{
+                    SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember","false");
+                    editor.apply();
+                }
+            }
+        });
 
         goToSignUP.setOnClickListener( v -> {
             startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
@@ -75,7 +108,7 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user.isEmailVerified()){
             finish();
-            startActivity(new Intent(SignInActivity.this,HomeActivity.class));
+            startActivity(new Intent(SignInActivity.this,ProfileActivity.class));
         }
         else {
             Toast.makeText(this, "please check your email", Toast.LENGTH_SHORT).show();
