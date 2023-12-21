@@ -1,147 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:id="@+id/drawer_layout_profile">
 
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:theme="@style/navigationTheme"
+        app:headerLayout="@layout/header_menu"
+        app:itemIconSize="30sp"
+        app:menu="@menu/main_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50sp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/shape"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="fullName"
-                android:textColor="@color/colorApp"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/icon_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="15sp"
+                android:src="@drawable/ic_menu"
+                app:tint="@color/colorApp" />
 
-            <EditText
-                android:id="@+id/editFullName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50sp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="fullName"
+                    android:textColor="@color/colorApp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="email"
+                    android:textColor="@color/colorApp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="cin"
+                    android:textColor="@color/colorApp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editCin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="phone"
+                    android:textColor="@color/colorApp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/editProfile"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="email"
-                android:textColor="@color/colorApp"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/colorApp"
+                android:text="Edit"
+                app:cornerRadius="20sp" />
 
-            <EditText
-                android:id="@+id/editEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="cin"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/arrow_back"
+                android:drawableTint="@color/colorApp"
+                android:text="logOut"
                 android:textColor="@color/colorApp"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editCin"
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="phone"
-                android:textColor="@color/colorApp"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editPhone"
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-
-                />
+                app:cornerRadius="20sp" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/editProfile"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@color/colorApp"
-            android:text="Edit"
-            app:cornerRadius="20sp" />
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/colorApp"
-            android:text="logOut"
-            app:cornerRadius="20sp"
-            android:drawableLeft="@drawable/arrow_back"
-            android:drawableTint="@color/colorApp"
-            />
-
-    </LinearLayout>
+    </ScrollView>
 
 
-
-</ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

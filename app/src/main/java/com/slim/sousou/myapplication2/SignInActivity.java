@@ -52,7 +52,7 @@ public class SignInActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
         String checkbox= preferences.getString("remember","");
         if (checkbox.equals("true")){
-            startActivity(new Intent(SignInActivity.this,ProfileActivity.class));
+            startActivity(new Intent(SignInActivity.this,HomeActivity.class));
         }else{
             Toast.makeText(this, "please login!", Toast.LENGTH_SHORT).show();
         }
@@ -108,7 +108,7 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user.isEmailVerified()){
             finish();
-            startActivity(new Intent(SignInActivity.this,ProfileActivity.class));
+            startActivity(new Intent(SignInActivity.this,HomeActivity.class));
         }
         else {
             Toast.makeText(this, "please check your email", Toast.LENGTH_SHORT).show();
