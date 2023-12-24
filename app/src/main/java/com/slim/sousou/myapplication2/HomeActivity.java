@@ -27,17 +27,16 @@ import com.slim.sousou.myapplication2.model.Device;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView icon;
     private DrawerLayout drawerLayout;
-    private  NavigationView navigationView;
-    private EditText deviceName , deviceValue;
+    private NavigationView navigationView;
+    private EditText deviceName, deviceValue;
     private Button addDevice;
     private ListView listDevices;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-
 
 
     @Override
@@ -46,7 +45,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         icon = findViewById(R.id.icon_home);
-        drawerLayout  = findViewById(R.id.drawer_layout_home);
+        drawerLayout = findViewById(R.id.drawer_layout_home);
         navigationView = findViewById(R.id.navigation_view_home);
         deviceName = findViewById(R.id.device_name);
         deviceValue = findViewById(R.id.device_value);
@@ -56,12 +55,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
-        addDevice.setOnClickListener(v->{
+        addDevice.setOnClickListener(v -> {
             String nameDevice = deviceName.getText().toString();
             String valueDevice = deviceValue.getText().toString();
-            HashMap<String,String> deviceMap = new HashMap<>();
+            HashMap<String, String> deviceMap = new HashMap<>();
             deviceMap.put("name", nameDevice);
-            deviceMap.put("value",valueDevice);
+            deviceMap.put("value", valueDevice);
             databaseReference.child("Devices").push().setValue(deviceMap);
             deviceName.setText("");
             deviceValue.setText("");
@@ -71,16 +70,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
         ArrayList<String> deviceArrayList = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this,R.layout.list_item,deviceArrayList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, R.layout.list_item, deviceArrayList);
         listDevices.setAdapter(adapter);
         DatabaseReference deviceReference = firebaseDatabase.getReference().child("Devices");
         deviceReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 deviceArrayList.clear();
-                for (DataSnapshot devicesSnapshot: snapshot.getChildren()){
+                for (DataSnapshot devicesSnapshot : snapshot.getChildren()) {
                     Device device = devicesSnapshot.getValue(Device.class);
-                    deviceArrayList.add(device.getName()+" : "+device.getValue()) ;
+
+                    //deviceArrayList.add(device.getName()+" : "+device.getValue()) ;
+                    //2éme methode:
+                    deviceArrayList.add(devicesSnapshot.child("name").getValue().toString() + " : " + devicesSnapshot.child("value").getValue().toString());
+
 
                 }
                 adapter.notifyDataSetChanged();
@@ -88,19 +91,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeActivity.this, ""+error , Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "" + error, Toast.LENGTH_SHORT).show();
             }
         });
 
         navigationDrawer();
 
-        navigationView.setNavigationItemSelectedListener(item ->{
-            switch (item.getItemId()){
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
                 case R.id.devices:
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
                 case R.id.profile:
-                    startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
+                    startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case R.id.ticket:
+                    startActivity(new Intent(HomeActivity.this, TicketElectrique.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
             }
@@ -113,10 +120,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.bringToFront();
 
-        icon.setOnClickListener(v ->{
-            if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+        icon.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
-            }else{
+            } else {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
@@ -133,9 +140,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }

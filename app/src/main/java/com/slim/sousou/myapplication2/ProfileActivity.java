@@ -62,6 +62,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 case R.id.profile:
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
+                case R.id.ticket:
+                    startActivity(new Intent(ProfileActivity.this,TicketElectrique.class));
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
             }
             return true;
         });

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_ticket"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TicketElectrique">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:theme="@style/navigationTheme"
+        app:headerLayout="@layout/header_menu"
+        app:itemIconSize="30sp"
+        app:menu="@menu/main_menu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon_ticket"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="15sp"
+            android:src="@drawable/ic_menu"
+            app:tint="@color/colorApp" />
+
+        <RadioGroup
+            android:id="@+id/rg_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <RadioButton
+                android:id="@+id/rb_choixA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix A"
+                android:textColor="@color/colorApp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                />
+
+            <RadioButton
+                android:id="@+id/rb_choixB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix B"
+                android:textColor="@color/colorApp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/rb_choixC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choix C"
+                android:textColor="@color/colorApp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/get_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Get ticket "
+            android:backgroundTint="@color/colorApp"
+            app:cornerRadius="20sp"
+            />
+
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
